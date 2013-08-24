@@ -5,25 +5,25 @@
 #define CTRL_REG3 0x22
 #define CTRL_REG4 0x23
 
-int Addr = 105;                 // I2C address of gyro
+int Addr = 105;                   // I2C address of gyro
 int x, y, z;
 
 void setup(){
   Wire.begin();
   Serial.begin(9600);
-  writeI2C(CTRL_REG1, 0x1F);    // Turn on all axes, disable power down
-  writeI2C(CTRL_REG3, 0x08);    // Enable control ready signal
-  writeI2C(CTRL_REG4, 0x80);    // Set scale (500 deg/sec)
-  delay(100);                   // Wait to synchronize 
+  writeI2C(CTRL_REG1, 0x1F);      // Turn on all axes, disable power down
+  writeI2C(CTRL_REG3, 0x08);      // Enable control ready signal
+  writeI2C(CTRL_REG4, 0x80);      // Set scale (500 deg/sec)
+  delay(100);                     // Wait to synchronize 
 }
 
 void loop(){
-  getGyroValues();              // Get new values
+  getGyroValues();                // Get new values
   // In following Dividing by 114 reduces noise
   Serial.print("Raw X:");  Serial.print(x / 114);  //roll
   Serial.print(" Raw Y:"); Serial.print(y / 114);  //pitch
   Serial.print(" Raw Z:"); Serial.println(z / 114);//yaw
-  delay(500);                   // Short delay between reads
+  delay(500);                     // Short delay between reads
 }
 
 void getGyroValues () {
