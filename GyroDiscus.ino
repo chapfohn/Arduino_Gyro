@@ -18,12 +18,12 @@ void setup(){
 }
 
 void loop(){
-  getGyroValues();                // Get new values
+  getGyroValues();                                  // Get new values
   // In following Dividing by 114 reduces noise
-  Serial.print("Raw X:");  Serial.print(x / 114);  //roll
-  Serial.print(" Raw Y:"); Serial.print(y / 114);  //pitch
-  Serial.print(" Raw Z:"); Serial.println(z / 114);//yaw
-  delay(500);                     // Short delay between reads
+  Serial.print("Raw X:");  Serial.print(x / 114);   //roll
+  Serial.print(" Raw Y:"); Serial.print(y / 114);   //pitch
+  Serial.print(" Raw Z:"); Serial.println(z / 114); //yaw
+  delay(500);                                       // Short delay between reads, half second
 }
 
 void getGyroValues () {
